@@ -1,0 +1,26 @@
+<!-- cdkDropListGroup permet aux colonnes de communiquer entre elles -->
+<div class="board" cdkDropListGroup>
+  <!-- Boucle sur le signal board() pour afficher les colonnes -->
+  @for (column of board(); track column.id) {
+    <div class="column">
+      <h2>{{ column.title }}</h2>
+
+      <!-- La zone où on peut lâcher les cartes -->
+      <div
+        class="card-list"
+        cdkDropList
+        [cdkDropListData]="column.cards"
+        (cdkDropListDropped)="drop($event)"
+      >
+        <!-- On boucle sur les cartes de la colonne -->
+        @for (card of column.cards; track card.id) {
+          <!-- cdkDrag rend la carte "saisissable" avec la souris -->
+          <div class="card" cdkDrag>
+            <strong>{{ card.company }}</strong>
+            <p>{{ card.role }}</p>
+          </div>
+        }
+      </div>
+    </div>
+  }
+</div>
