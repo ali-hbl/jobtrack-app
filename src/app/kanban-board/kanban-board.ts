@@ -6,7 +6,9 @@ import {
   moveItemInArray,
   transferArrayItem,
 } from '@angular/cdk/drag-drop';
+
 import { Component, signal } from '@angular/core';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
 export interface KanbanCard {
   id: string;
@@ -23,7 +25,7 @@ export interface KanbanColumn {
 @Component({
   selector: 'app-kanban-board',
   standalone: true,
-  imports: [CdkDrag, CdkDropList, CdkDropListGroup],
+  imports: [CdkDrag, CdkDropList, CdkDropListGroup, ReactiveFormsModule],
   templateUrl: './kanban-board.html',
   styleUrl: './kanban-board.scss',
 })
@@ -49,6 +51,33 @@ export class KanbanBoard {
       cards: [],
     },
   ]);
+
+  newCardForm = new FormGroup({
+    company: new FormControl('', Validators.required),
+    role: new FormControl('', Validators.required),
+  });
+
+  // Fonction pour ajouter une carte dans le Signal
+  addCard() {
+    if (this.newCardForm.valid) {
+      const newCard: KanbanCard = {
+        id: Date.now().toString(), // faux ID temporaire
+        company: this.newCardForm.value.company!,
+        role: this.newCardForm.value.role!,
+      };
+
+      // met à jour le Signal
+      this.board.update((currentBoard) => {
+        // trouve la colonne "À postuler"
+        const todoColumn = currentBoard.find((col) => col.id === 'todo');
+        if (todoColumn) {
+          todoColumn.cards.unshift(newCard);
+        }
+        return [...currentBoard];
+      });
+      this.newCardForm.reset();
+    }
+  }
 
   // Fonction du CDK qui gère le déplacement en mémoire
   drop(event: CdkDragDrop<KanbanCard[]>) {
