@@ -1,10 +1,9 @@
 # Kanbanterview
 
-**An AI-Powered Application Tracker & Interview Coach**
-
 Kanbanterview is an application tracking system designed as a Kanban board (similar to Trello or Jira), built specifically for developers looking for internships or jobs.
 
-I created it while preparing my own applications, because existing trackers were either too generic or didn’t help me practice for technical interviews.  
+I created it while preparing my own applications, because existing trackers were either too generic or didn’t help me practice for technical interviews.
+
 Beyond a simple “to-do list”, it uses a production-style architecture and a local AI to simulate real technical interview rounds.
 
 ## Key Features
