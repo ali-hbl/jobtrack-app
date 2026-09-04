@@ -7,7 +7,7 @@ Kanbanterview is an application tracking system designed as a Kanban board (simi
 I created it while preparing my own applications, because existing trackers were either too generic or didn’t help me practice for technical interviews.  
 Beyond a simple “to-do list”, it uses a production-style architecture and a local AI to simulate real technical interview rounds.
 
-## ✨ Key Features
+## Key Features
 
 - **Interactive Kanban Board:**  
   A dynamic UI with smooth drag-and-drop to track applications across different stages (Applied, Interview, Offer, Rejected, etc.).
@@ -20,7 +20,7 @@ Beyond a simple “to-do list”, it uses a production-style architecture and a 
   A clean separation of concerns using a RESTful API to manage relational data securely and act as a bridge for AI prompting.  
   This project was also an opportunity for me to practice Angular signals, standalone components, and designing a REST API in ASP.NET Core.
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 - **Frontend:** Angular 22 (Standalone Components, Signals, CDK Drag & Drop, Reactive Forms)
 - **Backend:** ASP.NET Core 8 Web API (C#, REST Architecture)
